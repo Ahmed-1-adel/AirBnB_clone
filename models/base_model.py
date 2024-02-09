@@ -17,11 +17,11 @@ class BaseModel() :
         self.created_at = dateTime.now()
         self.updated_at = dateTime.now()
         if len(kwargs) != 0:
-            for kwarg, value in kwargs.items():
-                if kwarg == "created_at" or value == "updated_at":
-                    self.__dict__[kwarg] = dateTime.strptime(value, newData)
+            for key, value in kwargs.items():
+                if key == "created_at" or value == "updated_at":
+                    self.__dict__[key] = dateTime.strptime(value, newData)
                 else :
-                    self.__dict__[kwarg] = value
+                    self.__dict__[key] = value
         else:
             models.storage.new(self)
     def safe(self):
