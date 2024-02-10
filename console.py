@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """ Command Interpreter Module """
 
 import cmd
@@ -141,6 +142,8 @@ if __name__ == "__main__":
 
 
 
+=======
+>>>>>>> 50791ba6f603cc6c039df833a60fa58185f0b4ff
 import cmd
 from models.user import User
 from models.engine.file_storage import FileStorage
