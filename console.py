@@ -128,5 +128,6 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             print(e.__doc__)
 
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
