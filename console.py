@@ -28,7 +28,19 @@ class HBNBCommand(cmd.Cmd):
         "Amenity",
         "Review"
     }
+    def do_quit(self, line):
+        """Quit command to exit the program"""
+        return True
+    
+    def do_EOF(self, line):
+        """Handles End of File"""
+        print()
+        return True
 
+    def emptyline(self):
+        """Called when an empty line is entered"""
+        pass
+    
     def do_create(self, line):
         """Creates a new instance of BaseModel"""
         args = shlex.split(line)
@@ -130,19 +142,6 @@ class HBNBCommand(cmd.Cmd):
             obj[key].save()
         except Exception as e:
             print(e.__doc__)
-
-    def do_quit(self, line):
-        """Quit command to exit the program"""
-        return True
-
-    def do_EOF(self, line):
-        """Handles End of File"""
-        print()
-        return True
-
-    def emptyline(self):
-        """Called when an empty line is entered"""
-        pass
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
