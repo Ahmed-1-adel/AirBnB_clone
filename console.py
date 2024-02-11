@@ -4,6 +4,7 @@
 import cmd
 import shlex
 import models
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -44,60 +45,44 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """Creates a new instance of BaseModel"""
         args = shlex.split(line)
-        if not args:
+        if len(args) == 0:
             print("** class name missing **")
-            return
-        try:
-            new_instance = eval(args[0])()
-            new_instance.save()
-            print(new_instance.id)
-        except Exception:
+        elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
+        else:
+            print(eval(args[0]().id))
+            storage.save()
 
     def do_show(self, line):
         """Prints the string representation of an instance"""
         args = shlex.split(line)
-        if not args:
+        objDict = storage.all()
+        if len(args) == 0:
             print("** class name missing **")
-            return
-        try:
-            if args[0] not in models.classes:
-                print("** class doesn't exist **")
-                return
-            if len(args) < 2:
-                print("** instance id missing **")
-                return
-            key = args[0] + "." + args[1]
-            obj = models.storage.all()
-            if key not in obj:
-                print("** no instance found **")
-                return
-            print(obj[key])
-        except Exception:
+        elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif "{}.{}".format(args[0], args[1]) not in objDict:
+            print("** no instance found **")
+        else:
+            print(objDict["{}.{}".format(args[0], args[1])])
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
         args = shlex.split(line)
-        if not args:
+        objDict = storage.all()
+        if len(args) == 0:
             print("** class name missing **")
-            return
-        try:
-            if args[0] not in models.classes:
-                print("** class doesn't exist **")
-                return
-            if len(args) < 2:
-                print("** instance id missing **")
-                return
-            key = args[0] + "." + args[1]
-            obj = models.storage.all()
-            if key not in obj:
-                print("** no instance found **")
-                return
-            del obj[key]
-            models.storage.save()
-        except Exception:
+        elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif "{}.{}".format(args[0], args[1]) not in objDict.keys():
+            print("** no instance found **")
+        else:
+            del objDict["{}.{}".format(args[0], args[1])]
+            storage.save()
 
     def do_all(self, line):
         """Prints all string representation of all instances"""
