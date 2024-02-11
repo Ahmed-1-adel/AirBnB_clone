@@ -1,4 +1,4 @@
-0x00. AirBnB clone - The console
+/0x00. AirBnB clone - The console
 0x00.Table of contents
 0x01 Introduction
 0x02 Environment
@@ -29,10 +29,6 @@ Style guidelines:
 pycodestyle (version 2.7.\*)
 PEP8
 All the development and testing was runned over an operating system Ubuntu 20.04 LTS using programming language Python 3.8.3. The editors used were VIM 8.1.2269, VSCode 1.6.1 and Atom 1.58.0 . Control version using Git 2.25.1.
-
-0x03 Installation
-git clone https://github.com/aysuarex/AirBnB_clone.git
-change to the AirBnb directory and run the command:
 
 ./console.py
 Execution
@@ -158,8 +154,8 @@ Updates an instance based on the class name, id, and kwargs passed. Update the f
 
 (hbnb) create User
 1afa163d-486e-467a-8d38-3040afeaa1a1
-(hbnb) update User 1afa163d-486e-467a-8d38-3040afeaa1a1 email "aysuarex@gmail.com"
+(hbnb) update User 1afa163d-486e-467a-8d38-3040afeaa1a1 email "ahmedadel123321m@gmail.com"
 (hbnb) show User 1afa163d-486e-467a-8d38-3040afeaa1a1
-[User] (s) [User] (1afa163d-486e-467a-8d38-3040afeaa1a1) {'id': '1afa163d-486e-467a-8d38-3040afeaa1a1', 'created_at': datetime.datetime(2021, 11, 14, 23, 42, 10, 502157), 'updated_at': datetime.datetime(2021, 11, 14, 23, 42, 10, 502186), 'email': 'aysuarex@gmail.com'}
+[User] (s) [User] (1afa163d-486e-467a-8d38-3040afeaa1a1) {'id': '1afa163d-486e-467a-8d38-3040afeaa1a1', 'created_at': datetime.datetime(2021, 11, 14, 23, 42, 10, 502157), 'updated_at': datetime.datetime(2021, 11, 14, 23, 42, 10, 502186), 'email': 'ahmedadel123321m@gmail.com'}
 (hbnb)
 Authors
